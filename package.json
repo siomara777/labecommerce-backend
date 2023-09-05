@@ -1,0 +1,23 @@
+{
+  "name": "labecommerce-backend",
+  "version": "1.0.0",
+  "description": "Exercicios",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js",
+    "game1": "node ./exercicios/par ou impar.js",
+    "game2": "node ./exercicios/pedra-papel-tesoura.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/siomara777/labecommerce-backend.git"
+  },
+  "author": "Siomara",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/siomara777/labecommerce-backend/issues"
+  },
+  "homepage": "https://github.com/siomara777/labecommerce-backend#readme"
+}
