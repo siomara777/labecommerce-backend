@@ -1,5 +1,6 @@
-import { users, products } from "./database";
+import { users, products, listaDeUsuarios } from "./database";
 
 
-console.table(users);
-console.table( products);
+// console.table(users);
+// console.table( products);
+console.log(listaDeUsuarios);
