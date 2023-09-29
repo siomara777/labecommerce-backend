@@ -29,14 +29,14 @@ app.get("/ping", (req: Request, res: Response) => {
 //     const resultProducts: Tproducts[] = products
 //     res.status(200).send(resultProducts)
 // })
-app.get("/users", (req: Request, res: Response): void => {
-  try {
-    const resultUsers: Tusers[] = users;
-    res.status(200).send(resultUsers);
-  } catch (error) {
-    res.status(500).send({ error: "Erro ao buscar usuários." });
-  }
-});
+// app.get("/users", (req: Request, res: Response): void => {
+//   try {
+//     const resultUsers: Tusers[] = users;
+//     res.status(200).send(resultUsers);
+//   } catch (error) {
+//     res.status(500).send({ error: "Erro ao buscar usuários." });
+//   }
+// });
 
 app.get("/products", (req: Request, res: Response): void => {
   try {
@@ -367,3 +367,23 @@ app.put("/products/:id", (req: Request, res: Response) => {
     res.status(500).json({ error: "Ocorreu um errooooo interno" });
   }
 });
+// Exercício - Aprofundamento SQL
+// Exercício 1
+// Get All Users = retorna todas as pessoas cadastradas
+
+app.get('/users', (req: Request, res: Response) => {
+      const resultUsers: Tusers[] = users
+      res.status(200).send(resultUsers)
+  })
+
+// Get All Products (funcionalidade 1) = retorna todos os produtos cadastrados
+
+  app.get('/products', (req: Request, res: Response) => {
+      const resultProducts: Tproducts[] = products
+      res.status(200).send(resultProducts)
+  })
+  
+
+  // Get all Products (funcionalidade 2)
+  // imagine um termo de busca, por exemplo "gamer"
+  // retorna somente os produtos que possuem em seu nome o termo "gamer"
