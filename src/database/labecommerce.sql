@@ -1,4 +1,4 @@
--- Active: 1695773949824@@127.0.0.1@3306
+-- Active: 1696356929210@@127.0.0.1@3306
 CREATE TABLE users(
     id TEXT PRIMARY KEY UNIQUE NOT NULL,
     name TEXT NOT NULL,
@@ -118,3 +118,70 @@ SET name = 'Armário',
     description = 'Armário de canto',
     image_url = 'https://images.unsplash.com/'
 WHERE ID = 'p006';
+
+
+-- // Exercícios - Relações em SQL I
+
+-- Exercicio - 1
+-- Criação da tabela de pedidos
+
+
+CREATE TABLE purchases (
+    id TEXT PRIMARY KEY NOT NULL UNIQUE,
+    buyer TEXT NOT NULL,
+    total_price REAL NOT NULL,
+    created_at TEXT NOT NULL,
+    FOREIGN KEY (buyer) REFERENCES users(id)
+);
+
+-- Exercicio - 2
+-- a) Crie um pedido para cada pessoa cadastrada
+
+    -- no mínimo 2 no total (ou seja, na tabela users deve existir pelo menos 2 pessoas diferentes)
+    -- escolha um valor aleatório para o preço total do pedido e a data em texto
+
+SELECT * FROM purchases;
+
+SELECT * FROM users;
+
+
+INSERT INTO purchases (id, buyer, total_price, created_at)
+VALUES (
+    'p001',
+    'u005', 
+    100.50,
+    datetime('now', 'localtime')
+    ), (
+    'p002',
+    'u002', 
+    300.50,
+    datetime('now', 'localtime')
+    );
+    
+
+-- b) Edite o preço total do pedido (só pra praticar)
+-- simule que o pedido foi alterado e o preço total diminuiu ou aumentou
+
+
+UPDATE purchases
+SET total_price = total_price + 650
+WHERE id = 'p001';
+
+
+UPDATE purchases
+SET total_price = total_price - 95
+WHERE id = 'p002';
+
+
+-- Exercicio - 3
+
+SELECT
+    p.id AS id_da_compra,    
+    u.id AS id_de_quem_fez_a_compra,
+    u.name AS nome_de_quem_fez_a_compra,
+    u.email AS email_de_quem_fez_a_compra,
+    p.total_price AS preco_total_da_compra,
+    p.created_at AS data_da_compra
+FROM purchases AS p 
+JOIN users AS u 
+ON p.buyer = u.id;
