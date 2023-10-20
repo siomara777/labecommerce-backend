@@ -6,22 +6,31 @@ export const users: Tusers[] =
     {
         
         id: "u001",
-        name: "Fulano",
-        email: "fulano@email.com",
-        password: "fulano123",
+        name: "Iracema",
+        email: "cema@email.com",
+        password: "cema1234",
         createdAt: new Date().toLocaleString(),
     },
 
     {
         id: "u002",
-        name: "Fulano",
-        email: "fulano@email.com",
-        password: "fulano123",
+        name: "Reynaldo",
+        email: "rey@email.com",
+        password: "naldo12345",
         createdAt: new Date().toLocaleString(),
 
             
-    }      
+    },      
 
+    {
+        id: "u003",
+        name: "Iara",
+        email: "iara@email.com",
+        password: "iara123456",
+        createdAt: new Date().toLocaleString(),
+
+            
+    }    
 ]
 
 export const products: Tproducts[] = 
@@ -40,8 +49,17 @@ export const products: Tproducts[] =
         price: 900,
         description: "Monitor LED Full HD 24 polegadas",
         imageUrl: "https://picsum.photos/seed/Monitor/400",
-
     },
+
+        {
+            id: "prod003",
+            name: "Teclado gamer",
+            price: 200,
+            description: "Teclado mecânico com numpad",
+            imageUrl: "https://picsum.photos/seed/Teclado%20gamer/400"
+        }
+
+
 ]
 ////Exercicio I
 export function createUser(id: string, name:string, email:string, password:string): string {
@@ -81,3 +99,6 @@ export function searchProductsByName(name: string): Tproducts[] {
 
 
 }
+
+
+

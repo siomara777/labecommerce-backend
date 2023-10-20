@@ -1,4 +1,4 @@
--- Active: 1696523992352@@127.0.0.1@3306
+-- Active: 1697248574376@@127.0.0.1@3306
 CREATE TABLE users(
     id TEXT PRIMARY KEY UNIQUE NOT NULL,
     name TEXT NOT NULL,
@@ -115,8 +115,8 @@ CREATE TABLE purchases (
     total_price REAL NOT NULL,
     created_at TEXT NOT NULL,
     FOREIGN KEY (buyer) REFERENCES users(id)
-    ON UPDATE CASCADE -- efeito cascata ao atualizar id na tabela users
-	ON DELETE CASCADE -- efeito cascata ao atualizar id na tabela users
+    ON UPDATE CASCADE -- efeito cascata ao atualizar id na tabela users --  Exercício 3
+	ON DELETE CASCADE -- efeito cascata ao atualizar id na tabela users --  Exercício 3
 );
 
 DROP TABLE purchases;
@@ -127,31 +127,35 @@ DROP TABLE purchases;
 -- a) Crie um pedido para cada pessoa cadastrada
 -- no mínimo 2 no total (ou seja, na tabela users deve existir pelo menos 2 pessoas diferentes)
 -- escolha um valor aleatório para o preço total do pedido e a data em texto
+
 SELECT *
 FROM purchases;
+
 SELECT *
 FROM users;
+
 INSERT INTO purchases (id, buyer, total_price, created_at)
 VALUES (
-        'p001',
-        'u005',
-        100.50,
-        datetime('now', 'localtime')
-    ),
-    (
-        'p002',
+        'c004',
         'u002',
-        300.50,
+        450,
         datetime('now', 'localtime')
-    );
+    )
+    
+    
+
 -- b) Edite o preço total do pedido (só pra praticar)
 -- simule que o pedido foi alterado e o preço total diminuiu ou aumentou
 UPDATE purchases
-SET total_price = total_price + 650
-WHERE id = 'p001';
+SET total_price = total_price + 750
+WHERE id = 'c002';
+
 UPDATE purchases
 SET total_price = total_price - 95
 WHERE id = 'p002';
+
+
+
 -- Exercicio - 3
 SELECT p.id AS id_da_compra,
     u.id AS id_de_quem_fez_a_compra,
@@ -172,22 +176,24 @@ CREATE TABLE purchases_products (
     quantity INTEGER NOT NULL,
     FOREIGN KEY (purchase_id) REFERENCES purchases(id),
     FOREIGN KEY (product_id) REFERENCES products(id)
-    ON UPDATE CASCADE -- efeito cascata ao atualizar id na tabela users
-	ON DELETE CASCADE -- efeito cascata ao atualizar id na tabela users
+    ON UPDATE CASCADE -- efeito cascata ao atualizar id na tabela users --  Exercício 3
+	ON DELETE CASCADE -- efeito cascata ao atualizar id na tabela users--  Exercício 3
 );
+
 
 DROP TABLE purchases_products;
 
 
 SELECT * FROM purchases_products;
 
+
 --  Exercício 2
 -- a) Inserção dos dados
 
 INSERT INTO purchases_products (purchase_id, product_id, quantity)
-VALUES ('c001', 'p003', 3),
-       ('c001', 'p004', 2),
-       ('c001', 'p005', 1);
+VALUES ('c001', 'prod009', 3),
+       ('c001', 'prod004', 2),
+       ('c001', 'prod0015', 1);
 
 INSERT INTO purchases_products (purchase_id, product_id, quantity)
 VALUES ('c002', 'p006', 4),
@@ -202,7 +208,17 @@ FROM purchases_products
 INNER JOIN purchases ON purchases_products.purchase_id = purchases.id
 INNER JOIN products ON purchases_products.product_id = products.id;
 
---  Exercício 3
+
+
+
+SELECT * FROM products;
+
+SELECT * FROM users
+
+SELECT * FROM purchases;
+
+SELECT * FROM purchases_products;
+
 
 
 
