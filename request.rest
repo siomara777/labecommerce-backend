@@ -1,0 +1,73 @@
+GET http://localhost:3003/users
+##
+
+###
+GET http://localhost:3003/products 
+##
+
+
+###
+GET http://localhost:3003/products/search?nameP=ca
+
+###
+POST http://localhost:3003/users
+Content-Type: application/json
+
+    {
+        
+        "id": "u0011",
+        "name": "Rodrigo",
+        "email": "rod@email.com",
+        "password": "rod1235"
+        
+    }
+    
+
+###
+POST http://localhost:3003/products
+Content-Type: application/json
+
+    {
+        "id": "prod0022",
+        "name": "Cama de solteiro",
+        "price": 900,
+        "description": "Cama de madeira",
+        "imageUrl": "https://picsum.photos/seed/Teclado%20gamer/400"
+    }
+###
+POST http://localhost:3003/purchases
+Content-Type: application/json
+
+{
+  
+  "purchase_id": "c009",
+  "buyer": "u008",
+  "total_price": 200.00,
+  "quantity": 10,
+  "product_id": "p006",
+   "created_at": "20/10/23"
+  
+
+}
+
+###
+
+PUT http://localhost:3003/products/prod002
+Content-Type: application/json
+
+    {
+        "newId": "prod002",
+        "newName": "Cama de casal",
+        "newPrice": 1000.00,
+        "newDescription": "Cama de madeira",
+        "newImageUrl": "https://nova-imagem.com"
+    }
+
+
+####
+DELETE http://localhost:3003/purchases/c001
+
+
+
+###
+DELETE http://localhost:3003/purchases_products/c002
